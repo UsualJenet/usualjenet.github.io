@@ -1,45 +1,64 @@
-This is the source for my website running at [michaeldwan.com](http://michaeldwan.com). All content is written by me, Michael Dwan. The site is built atop [Jekyll](http://jekyllrb.com) and hosted on [S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html).
+# resume-template
 
-# Getting Started
+*A simple Jekyll + GitHub Pages powered resume template.*
 
-```
-bundle install
-bundle exec rake serve
-```
+![img](images/screenshot.png)
 
-This site uses mostly vanilla Jekyll, so [read the docs](http://jekyllrb.com/docs/home/) for more info.
-There are a few custom things going on though:
+## Docs
 
-* The actual source files are under the `source` directory instead of the repo root. Jekyll compiles the source to the build directory.
-* [jekyll-assets](https://github.com/ixti/jekyll-assets) is used to compile [SCSS](http://sass-lang.com) files, located in `source/_assets/stylesheets`, into CSS. Jekyll 2.0 has builtin support for SCSS, but jekyll-assets appends a hash to the generated asset files which ensures updated assets aren't cached downstream. It also plays nicely with images.
-* The [alias generator](http://github.com/tsmango/jekyll_alias_generator) plugin is being used to generate redirect pages.
+### Running locally
 
-# Configuration
+To test locally, run the following in your terminal:
 
-I love when people fork and redeploy this code, but a few times it's been done while still using my site's Google Anaytics or Disqus configs. To stop that from happening, I've removed the hardcoded ids and split out configuration into global and personal config files.
+1. Clone repo locally
+1. `bundle install`
+2. `bundle exec jekyll serve`
+3. Open your browser to `localhost:4000`
 
-Standard Jekyll settings are in the `_config.yml` file and config specific to my site is in an uncommitted file called `_local_config.yml`. An example of what my personal config looks is in `_local_config.yml.example`.
+### Customizing
 
-When calling Jekyll, just specify both config files and the values will be merged.
+First you'll want to fork the repo to your own account. Then clone it locally and customize, or use the GitHub web editor to customize.
 
-`bundle exec jekyll serve --config _config.yml,_local_config.yml`
+#### Options/configuration
 
-A `rake serve` task wraps that call up so you don't have to remember the `--config` flag each time:
+Most of the basic customization will take place in the `/_config.yml` file. Here is a list of customizations available via `/_config.yml`:
 
-`bundle exec rake serve`
+[...write these out...]
 
-# Deployment
+#### Editing content
 
-My site is hosted on S3 and served with CloudFront. I've created a small rake task that builds the site and deploys it to an S3 bucket. It only uploads new or changed files, so deploys are fast even for large sites. It'll also remove any stale files left from previous deploys.
+Most of the content configuration will take place in the `/_layouts/resume.html` file. Simply edit the markup there accordingly
 
-Your AWS keys and bucket are through `ENV` variables. I'm using the [dotenv](https://github.com/bkeepers/dotenv) gem to load variables from a `.env` file before deploying. Since AWS keys are sensitive, the `.env` file isn't committed to source. Take a look at the `.env.example` file to see what your `.env` file should look like.
+### Publishing to GitHub Pages for free
 
-To deploy, just run:
+[GitHub Pages](https://pages.github.com/) will host this for free with your GitHub account. Just make sure you're using a `gh-pages` branch, and the site will automatically be available at `yourusername.github.io/resume-template` (you can rename the repo to resume for your own use if you want it to be available at `yourusername.github.io/resume`). You can also add a CNAME if you want it to be available at a custom domain...
 
-`rake deploy`
+### Configuring with your own domain name
 
-You can probably also deploy this to Github pages, though I haven't tried it in a few years.
+To setup your GH Pages site with a custom domain, [follow the instructions](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/) on the GitHub Help site for that topic.
 
-# License
+### Themes
 
-This code is licensed [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/). Basically, you can use it however you want, just attribute me somewhere with a link back to [michaeldwan.com](http://michaeldwan.com). Enjoy.
+Right now resume-template only has one theme. More are coming :soon: though. :heart:
+
+## Roadmap
+
+- [ ] Add print button/styles
+- [ ] Add PDF button/functionality
+- [ ] Add more theme styles
+- [ ] Add a "fork me on GitHub" thing
+- [ ] Finish docs
+- [ ] Cleanup CSS
+
+## Contributing
+
+If you spot a bug, or want to improve the code, or even make the dummy content better, you can do the following:
+
+1. [Open an issue](https://github.com/jglovier/resume-template/issues/new) describing the bug or feature idea
+2. Fork the project, make changes, and submit a pull request
+
+## License
+
+The code and styles are licensed under the MIT license. [See project license.](LICENSE) Obviously you should not use the content of this demo repo in your own resume. :wink:
+
+Disclaimer: Use of Homer J. Simpson image and name used under [Fair Use](https://en.wikipedia.org/wiki/Fair_use) for educational purposes. Project license does not apply to use of this material.
